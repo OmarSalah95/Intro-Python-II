@@ -39,8 +39,7 @@ room['treasure'].s_to = room['narrow']
 
 # Make a new player object that is currently in the 'outside' room.
 player1 = Player(1, room['outside'])
-print(f'***** Current Room: {player1.current_room.name} *****')
-print(f'***** Current Description: {player1.current_room.description} *****')
+player1.getCurrentLocation()
 
 # Write a loop that:
 #
@@ -52,20 +51,21 @@ print(f'***** Current Description: {player1.current_room.description} *****')
 # Print an error message if the movement isn't allowed.
 #
 # If the user enters "q", quit the game.
-while True:
+
+game_active = True
+while game_active:
     directions = ['n', 's', 'e', 'w']
     userInput = input("What is your next Play? ")
     if (userInput == 'q'):
         conf = input("Are you sure you want to quit?(Y/N) ")
         if (conf.upper() == 'Y'):
             print("Game is being quite...")
-            break
+            game_active = False
         else:
             print("Good choice lets go again!")
             continue
-    # elif (userInput in directions):
-        # This is where we will fire off the player Method to move to a new room.
-        # player1.move(<Newroom Location>)
+    elif (userInput in directions):
+        player1.move(userInput)
     else:
         print('That Command was invalid.')
         
