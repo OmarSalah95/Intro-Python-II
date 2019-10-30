@@ -74,21 +74,27 @@ while game_active:
             continue
     elif (userInput.lower() =='loot'):
         if player1.current_loc.items:
-            itemNames = {item.name for item in player1.current_loc.items}
-            print(itemNames)
+            itemNames = {item.name.lower() for item in player1.current_loc.items}
+            for item in player1.current_loc.items:
+                item.getItem() 
             item = input("\n\nWhat is it we will be plundering from this room? ").lower()
-            player1.loot(item)
-            continue
+            if item.lower() in itemNames:
+                player1.loot(item)
+            else:
+                print("That item is actually not in this room!")
         else:
             print("It Seems this room has nothing worth taking")
             continue
     elif (userInput.lower() =='store'):
         if player1.bag:
+            itemNames = {item.name.lower() for item in player1.bag}
             for item in player1.bag:
                 item.getItem() 
             item = input("\n\nWhat is it we will storing in this room? ")
-            player1.store(item)
-            continue
+            if item.lower() in itemNames:
+                player1.store(item)
+            else:
+                print("That item is actually not in your bag!")
         else:
             print("It Seems your bag is Empty, let's go fill it!")
             continue

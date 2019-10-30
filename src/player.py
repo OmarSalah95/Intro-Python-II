@@ -63,5 +63,4 @@ class Player:
                 self.bag.remove(itemObj)
                 self.current_loc.items.append(itemObj)
                 print(f'You have dropped up {item}.')
-            else:
-                print("That Item doesn't seem to be in your bag. \n\nHere is what is available ", {item.name for item in self.bag})
+

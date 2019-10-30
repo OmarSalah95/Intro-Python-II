@@ -3,5 +3,5 @@ class Item:
         self.name = name
         self.description = description
     def getItem(self):
-        print(f'***************\n*** Item Name: {self.name}\n*** Item Description: {self.description}\n***************')
+        print(f'------ITEM------\n*** Name: {self.name}\n*** Item Description: {self.description}')
         
