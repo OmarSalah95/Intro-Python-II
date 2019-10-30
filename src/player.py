@@ -40,7 +40,7 @@ class player:
     #             self.noRooms()
         
     def move(self, direction):
-        if (direction in ['n', 's', 'e', 'w'] and self.current_loc.['%d_to' % direction]):
-            self.current_room = self.current_room.n_to
+        if (getattr(self.current_loc, f'{direction}_to')):
+            self.current_room = getattr(self.current_loc, f'{direction}_to')
             self.getCurrentRoom()
         else: print("There are no rooms that way!")
